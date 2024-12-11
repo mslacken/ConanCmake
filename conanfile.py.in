@@ -1,0 +1,12 @@
+# automatically generated, changes may be lost
+from conan import ConanFile
+class LibraryConan(ConanFile):
+    name = "@LIBRARY_NAME@"
+    version = "@LIBRARY_VERSION@"
+@OPTIONS@
+    def package_info(self):
+        self.cpp_info.includedirs = ["@LIBRARY_INCLUDE_DIRS@"]
+        self.cpp_info.system_libs = [libname]
+        self.cpp_info.sharedlinkflags = [f"@LD_FLAGS@"]
+        self.cpp_info.exelinkflags = [f"@LD_FLAGS@"]
+
