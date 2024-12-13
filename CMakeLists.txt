@@ -47,6 +47,6 @@ endif()
 
 configure_file("${CMAKE_CURRENT_BINARY_DIR}/conanfile.py.in" 
 	"${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY}/conanfile.py")
-
+file(APPEND default "${LIBRARY}/*: ${LIBRARY}/${LIBRARY_VERSION}@auser/obs\n")
 
 
