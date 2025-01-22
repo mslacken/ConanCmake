@@ -1,6 +1,6 @@
 # automatically generated, changes may be lost
 from conan import ConanFile
-class LibraryConan(ConanFile):
+class @CLASS_NAME@(ConanFile):
     name = "@LIBRARY_MODULE_NAME@"
     version = "@LIBRARY_VERSION@"
 

@@ -6,7 +6,7 @@ Simple `CMakeLists.txt` which creates conan recipes for the existing system libr
 
 Clone the project and then run following command 
 ```
-cmake -DLIBRARY=re2 .
+cmake -DLIBRARIES=re2 .
 ```
 which will try to detect the requested library.
 Now this library has to be imported into conan with following command
