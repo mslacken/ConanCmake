@@ -4,6 +4,12 @@ project(generic_conan_recipe)
 
 # Get the target library name from a CMake variable
 set(LIBRARIES bzip2 CACHE STRING "Target library name")
+
+# create header for default file if it doesn't exists
+if(NOT EXISTS default)
+  file(WRITE default "[replace_requires]")
+endif()
+
 foreach(LIBRARY ${LIBRARIES})
   find_package(${LIBRARY} MODULE)
   if(NOT ${LIBRARY}_FOUND)
@@ -25,7 +31,7 @@ foreach(LIBRARY ${LIBRARIES})
   get_cmake_property(_variableNames VARIABLES)
   list (SORT _variableNames)
   foreach (_variableName ${_variableNames})
-      message(STATUS "${_variableName}=${${_variableName}}")
+      message(DEBUG "${_variableName}=${${_variableName}}")
   endforeach()
 
   set(CLASS_NAME "Class_${LIBRARY}")
@@ -51,6 +57,6 @@ foreach(LIBRARY ${LIBRARIES})
 
   configure_file("${CMAKE_CURRENT_BINARY_DIR}/conanfile.py.in" 
     "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY}/conanfile.py")
-  file(APPEND default "${LIBRARY}/*: ${LIBRARY}/${LIBRARY_VERSION}@auser/obs\n")
+  file(APPEND default "${LIBRARY}/*: ${LIBRARY}/${LIBRARY_VERSION}@abuild/obs\n")
 endforeach()
 
